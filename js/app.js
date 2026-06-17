@@ -2,10 +2,9 @@
 // APP CORE - State, API, Router, Utils
 // ============================
 
-const API_URL = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+const API_URL = window.location.hostname === 'localhost'
   ? 'http://localhost:5000/api'
-  : (window.API_BASE || '/api');
-
+  : 'https://velric-london-api.onrender.com/api';
 const state = {
   token: localStorage.getItem('velric_token') || null,
   user: JSON.parse(localStorage.getItem('velric_user') || 'null'),
