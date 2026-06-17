@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Velric London | Premium Handcrafted Leather Goods</title>
+  
+  <!-- SEO Meta -->
+  <meta name="description" content="Velric London - Premium handcrafted leather goods from India. Shop genuine leather belts, jackets, shoes, purses, wallets & accessories. Free shipping above Rs.999.">
+  <meta name="keywords" content="leather goods, leather belts, leather jackets, leather shoes, handbags, wallets, premium leather, Velric London">
+  <meta name="author" content="Velric London">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Velric London | Premium Handcrafted Leather">
+  <meta property="og:description" content="Craftsmanship that speaks. Premium leather goods from India since 2026.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://velriclondon.com">
+  <meta property="og:image" content="https://res.cloudinary.com/demo/image/upload/v1/velric-og.jpg">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Velric London | Premium Handcrafted Leather">
+  <meta name="twitter:description" content="Premium leather goods crafted with heritage and precision.">
+  
+  <!-- Canonical -->
+  <link rel="canonical" href="https://velriclondon.com">
+  
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦁</text></svg>">
+  <!-- Chart.js (Admin only, lazy loaded in admin.js) -->
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- GSAP Scroll Animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <!-- Lenis Smooth Scroll -->
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Velric London",
+    "url": "https://velriclondon.com",
+    "logo": "https://velriclondon.com/assets/logo.png",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+919653078168",
+      "contactType": "customer service",
+      "email": "velriclondon2004@gmail.com",
+      "areaServed": "IN",
+      "availableLanguage": ["English", "Hindi"]
+    },
+    "sameAs": [
+      "https://www.instagram.com/velric_london_999",
+      "https://www.facebook.com/share/18b8kAF3Xi"
+    ]
+  }
+  </script>
+</head>
+<body>
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="preloader-content">
+      <div class="preloader-logo">Velric <span>London</span></div>
+      <div class="preloader-bar"><div class="preloader-progress"></div></div>
+      <p class="preloader-text">Crafting excellence...</p>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Scroll to Top -->
+  <button id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Scroll to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- Cart Overlay & Sidebar -->
+  <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+  <aside class="cart-sidebar" id="cartSidebar" aria-label="Shopping cart">
+    <div class="cart-header">
+      <h2>Your Cart</h2>
+      <button class="cart-close" onclick="toggleCart()" aria-label="Close cart"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <div class="empty-state">
+        <i class="fas fa-shopping-bag"></i>
+        <h3>Your cart is empty</h3>
+        <p>Add some premium leather goods!</p>
+      </div>
+    </div>
+    <div class="cart-footer" id="cartFooter" style="display:none">
+      <div class="cart-total"><span>Total</span><span id="cartTotal">Rs.0</span></div>
+      <button class="btn btn-dark" onclick="navigateTo('checkout')">Proceed to Checkout</button>
+    </div>
+  </aside>
+
+  <!-- Size Guide Modal -->
+  <div class="modal-overlay" id="sizeGuideModal" onclick="closeSizeGuide(event)">
+    <div class="modal" style="max-width:700px">
+      <div class="modal-header">
+        <h2>Size Guide</h2>
+        <button class="modal-close" onclick="closeSizeGuide()"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body">
+        <div class="size-guide-content">
+          <h4><i class="fas fa-ruler" style="color:var(--gold);margin-right:8px"></i>Belts (inches)</h4>
+          <div class="size-table-wrap">
+            <table class="size-table">
+              <tr><th>Size</th><th>Waist (in)</th><th>Waist (cm)</th></tr>
+              <tr><td>28</td><td>28-30</td><td>71-76</td></tr>
+              <tr><td>30</td><td>30-32</td><td>76-81</td></tr>
+              <tr><td>32</td><td>32-34</td><td>81-86</td></tr>
+              <tr><td>34</td><td>34-36</td><td>86-91</td></tr>
+              <tr><td>36</td><td>36-38</td><td>91-96</td></tr>
+              <tr><td>38</td><td>38-40</td><td>96-101</td></tr>
+              <tr><td>40</td><td>40-42</td><td>101-106</td></tr>
+            </table>
+          </div>
+          <h4 style="margin-top:20px"><i class="fas fa-ruler" style="color:var(--gold);margin-right:8px"></i>Shoes & Sandals (UK/India)</h4>
+          <div class="size-table-wrap">
+            <table class="size-table">
+              <tr><th>UK Size</th><th>Foot Length (cm)</th></tr>
+              <tr><td>5</td><td>24.0</td></tr>
+              <tr><td>6</td><td>24.5</td></tr>
+              <tr><td>7</td><td>25.5</td></tr>
+              <tr><td>8</td><td>26.5</td></tr>
+              <tr><td>9</td><td>27.0</td></tr>
+              <tr><td>10</td><td>27.5</td></tr>
+              <tr><td>11</td><td>28.5</td></tr>
+            </table>
+          </div>
+          <p style="margin-top:16px;font-size:13px;color:var(--text-secondary);">
+            <i class="fas fa-info-circle" style="color:var(--gold)"></i> 
+            For jackets, we recommend ordering your regular shirt size. If you're between sizes, size up for a comfortable fit.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Auth Modal -->
+  <div class="modal-overlay" id="authModal" onclick="closeAuthModal(event)">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>Welcome to Velric London</h2>
+        <button class="modal-close" onclick="closeAuthModal()"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body">
+        <div class="auth-tabs">
+          <button class="auth-tab active" onclick="switchAuthTab('login',event)">Login</button>
+          <button class="auth-tab" onclick="switchAuthTab('register',event)">Register</button>
+          <button class="auth-tab" onclick="switchAuthTab('otp',event)">Phone OTP</button>
+        </div>
+        <form id="loginForm" onsubmit="handleLogin(event)">
+          <div class="form-group"><label>Email</label><input type="email" id="loginEmail" required placeholder="you@example.com"></div>
+          <div class="form-group"><label>Password</label><input type="password" id="loginPassword" required placeholder="••••••••"></div>
+          <button type="submit" class="btn btn-dark" style="width:100%; justify-content:center;">Login</button>
+          <p style="text-align:center; margin-top:16px; font-size:13px; color:var(--text-secondary);">
+            <a href="#" onclick="showForgotPassword()" style="color:var(--primary);">Forgot password?</a>
+          </p>
+        </form>
+        <form id="registerForm" style="display:none" onsubmit="handleRegister(event)">
+          <div class="form-group"><label>Name</label><input type="text" id="regName" required placeholder="John Doe"></div>
+          <div class="form-group"><label>Email</label><input type="email" id="regEmail" required placeholder="you@example.com"></div>
+          <div class="form-group"><label>Phone</label><input type="tel" id="regPhone" placeholder="9876543210"></div>
+          <div class="form-group"><label>Password</label><input type="password" id="regPassword" required minlength="6" placeholder="Min 6 characters"></div>
+          <button type="submit" class="btn btn-dark" style="width:100%; justify-content:center;">Create Account</button>
+        </form>
+        <form id="otpForm" style="display:none">
+          <div class="form-group"><label>Phone Number</label><input type="tel" id="otpPhone" placeholder="9876543210" maxlength="10"></div>
+          <div id="otpVerifySection" style="display:none">
+            <div class="form-group"><label>Enter OTP</label><input type="text" id="otpCode" placeholder="123456" maxlength="6"></div>
+            <button type="button" class="btn btn-dark" style="width:100%; justify-content:center;" onclick="verifyOtp()">Verify OTP</button>
+          </div>
+          <button type="button" id="sendOtpBtn" class="btn btn-dark" style="width:100%; justify-content:center;" onclick="sendOtp()">Send OTP</button>
+        </form>
+        <form id="forgotForm" style="display:none" onsubmit="handleForgotPassword(event)">
+          <div class="form-group"><label>Email</label><input type="email" id="forgotEmail" required placeholder="you@example.com"></div>
+          <button type="submit" class="btn btn-dark" style="width:100%; justify-content:center;">Send Reset Link</button>
+          <p style="text-align:center; margin-top:16px; font-size:13px;">
+            <a href="#" onclick="switchAuthTab('login')" style="color:var(--primary);">Back to login</a>
+          </p>
+        </form>
+        <form id="resetForm" style="display:none" onsubmit="handleResetPassword(event)">
+          <div class="form-group"><label>New Password</label><input type="password" id="resetPassword" required minlength="6" placeholder="Min 6 characters"></div>
+          <button type="submit" class="btn btn-dark" style="width:100%; justify-content:center;">Reset Password</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product Quick View Modal -->
+  <div class="modal-overlay" id="productModal" onclick="closeProductModal(event)">
+    <div class="modal" style="max-width:900px">
+      <div class="modal-header">
+        <button class="modal-close" onclick="closeProductModal()"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body" id="productModalBody"></div>
+    </div>
+  </div>
+
+ <!-- Coupon Admin Modal -->
+  <div class="modal-overlay" id="couponModal" onclick="closeCouponModal(event)">
+    <div class="modal" style="max-width:600px; max-height:90vh; overflow-y:auto;">
+      <div class="modal-header">
+        <h3><i class="fas fa-ticket-alt" style="color:var(--gold);"></i> Manage Coupons</h3>
+        <button class="modal-close" onclick="closeCouponModal()"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body">
+        <form id="couponForm" onsubmit="submitCoupon(event)">
+          <div class="form-row">
+            <div class="form-group"><label>Coupon Code</label><input type="text" id="couponCode" required placeholder="WELCOME20" style="text-transform:uppercase;"></div>
+            <div class="form-group"><label>Description</label><input type="text" id="couponDesc" required placeholder="20% off first order"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Discount Type</label>
+              <select id="couponType" required>
+                <option value="percentage">Percentage (%)</option>
+                <option value="fixed">Fixed Amount (₹)</option>
+                <option value="free_delivery">Free Delivery</option>
+              </select>
+            </div>
+            <div class="form-group"><label>Value</label><input type="number" id="couponValue" required min="0" placeholder="20"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Min Order (₹)</label><input type="number" id="couponMin" value="0" min="0"></div>
+            <div class="form-group"><label>Max Discount (₹)</label><input type="number" id="couponMax" placeholder="Optional"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Valid From</label><input type="date" id="couponValidFrom" required></div>
+            <div class="form-group"><label>Valid Until</label><input type="date" id="couponValidUntil" required></div>
+          </div>
+          <div class="form-group"><label>Usage Limit</label><input type="number" id="couponLimit" placeholder="Optional (e.g. 100)"></div>
+          <button type="submit" class="btn btn-dark" style="width:100%;"><i class="fas fa-save"></i> Create Coupon</button>
+        </form>
+        <div id="couponList" style="margin-top:24px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Order Confirmation Modal -->
+  <div class="modal-overlay" id="orderConfirmModal">
+    <div class="modal" style="text-align:center; max-width:500px;">
+      <div style="font-size:64px; color:#27ae60; margin-bottom:16px;">✓</div>
+      <h2 style="margin-bottom:8px;">Order Placed Successfully!</h2>
+      <p style="color:var(--text-secondary); margin-bottom:24px;">Thank you for shopping with Velric London.</p>
+      <div id="confirmOrderDetails" style="background:var(--bg); padding:20px; border-radius:12px; margin-bottom:24px; text-align:left;"></div>
+      <div style="display:flex; gap:12px; justify-content:center;">
+        <button onclick="closeOrderConfirm(); navigateTo('orders')" class="btn btn-dark">View My Orders</button>
+        <button onclick="closeOrderConfirm(); navigateTo('shop')" class="btn btn-outline" style="color:var(--primary); border-color:var(--primary);">Continue Shopping</button>
+      </div>
+    </div>
+  </div>
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-links">
+     <a href="#home" class="logo" style="display:flex; align-items:center; gap:12px;"><img src="/campuseats-pro/frontend/images/logo.png" alt="Velric London" style="height:120px; width:auto;"></a>
+      <a href="#home" class="nav-link active">Home</a>
+      <a href="#shop" class="nav-link">Shop</a>
+      <a href="#craftmanship" class="nav-link">Craftsmanship</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <button onclick="toggleTheme()" aria-label="Toggle theme"><i class="fas fa-moon" id="themeIcon"></i></button>
+      <button onclick="toggleCart()" aria-label="Open cart"><i class="fas fa-shopping-bag"></i><span class="badge" id="cartBadge">0</span></button>
+      <button onclick="navigateTo('wishlist')" aria-label="Wishlist"><i class="fas fa-heart"></i></button>
+      <button id="authBtn" onclick="openAuthModal()" aria-label="Account"><i class="fas fa-user"></i></button>
+    </div>
+    <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Menu"><i class="fas fa-bars"></i></button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#home" onclick="toggleMobileMenu()">Home</a>
+    <a href="#shop" onclick="toggleMobileMenu()">Shop</a>
+    <a href="#craftmanship" onclick="toggleMobileMenu()">Craftsmanship</a>
+    <a href="#about" onclick="toggleMobileMenu()">About</a>
+    <a href="#contact" onclick="toggleMobileMenu()">Contact</a>
+    <a href="#account" onclick="toggleMobileMenu()">My Account</a>
+    <a href="#orders" onclick="toggleMobileMenu()">My Orders</a>
+    <a href="#wishlist" onclick="toggleMobileMenu()">Wishlist</a>
+   <a href="#admin" onclick="toggleMobileMenu()" id="mobileAdminLink" style="display:none; color:var(--gold); font-weight:700;"><i class="fas fa-crown" style="margin-right:8px;"></i>Admin Dashboard</a>
+  </div>
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb" id="breadcrumb" style="display:none"></div>
+
+  <!-- Main Content -->
+  <main id="mainContent"></main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <h4>Velric London</h4>
+        <p style="font-size:14px; line-height:1.6; margin-top:12px;">Premium handcrafted leather goods from India. Craftsmanship that speaks since 2026. Every piece tells a story of heritage and timeless style.</p>
+        <div style="display:flex; gap:14px; margin-top:20px; align-items: center;">
+          <a href="#home" class="logo" style="display:flex; align-items:center; gap:12px;"><img src="/campuseats-pro/frontend/images/logo.png" alt="Velric London" style="height:50px; width:auto;"></a>
+          <a href="https://www.instagram.com/velric_london_999?igsh=MW9vemh0eWVucWZ2Ng%3D%3D&utm_source=qr" target="_blank" rel="noopener" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com/share/18b8kAF3Xi/?mibextid=wwXIfr" target="_blank" rel="noopener" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="mailto:velriclondon2004@gmail.com" class="social-link" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          <a href="tel:+919653078168" class="social-link" aria-label="Phone"><i class="fas fa-phone"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4>Shop</h4>
+        <a href="#shop">All Products</a>
+        <a href="#shop?category=belts">Belts</a>
+        <a href="#shop?category=jackets">Jackets</a>
+        <a href="#shop?category=shoes">Shoes</a>
+        <a href="#shop?category=purses">Purses</a>
+        <a href="#shop?category=wallets">Wallets</a>
+        <a href="#shop?category=accessories">Accessories</a>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <a href="#contact">Contact Us</a>
+        <a href="#returns">Returns Policy</a>
+        <a href="#shipping">Shipping Info</a>
+        <a href="#faq">FAQ</a>
+        <a href="#privacy">Privacy Policy</a>
+        <a href="#terms">Terms & Conditions</a>
+        <a href="#size-guide" onclick="openSizeGuide();return false">Size Guide</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="tel:+919653078168"><i class="fas fa-phone"></i> +91 96530 78168</a>
+        <a href="mailto:velriclondon2004@gmail.com"><i class="fas fa-envelope"></i> velriclondon2004@gmail.com</a>
+        <p style="font-size:14px; margin-top:8px; line-height:1.6;"><i class="fas fa-map-marker-alt"></i> Kanpur Nagar, Uttar Pradesh, 208010, India</p>
+      </div>
+    </div>
+    
+    <!-- Newsletter -->
+    <div class="newsletter-section">
+      <div class="newsletter-inner">
+        <div>
+          <h4>Join the Velric Family</h4>
+          <p>Subscribe for exclusive offers, new arrivals, and leather care tips.</p>
+        </div>
+        <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+          <input type="email" placeholder="Enter your email" required id="newsletterEmail">
+          <button type="submit" class="btn btn-primary">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2026 Velric London. All rights reserved. | India</p>
+    </div>
+  </footer>
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/919653078168?text=Hi%20Velric%20London%2C%20I%20have%20a%20question%20about%20my%20order" 
+     target="_blank" rel="noopener" 
+     style="position:fixed; bottom:90px; right:24px; z-index:999; width:56px; height:56px; background:#25D366; color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:28px; box-shadow:0 4px 12px rgba(0,0,0,0.3); transition:transform 0.3s;"
+     onmouseover="this.style.transform='scale(1.1)'" 
+     onmouseout="this.style.transform='scale(1)'"
+     aria-label="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+  <!-- Cookie Consent -->
+  <div id="cookieBanner" style="position:fixed; bottom:0; left:0; right:0; background:var(--surface); border-top:1px solid var(--border); padding:16px 24px; z-index:1000; display:none; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+    <p style="font-size:13px; color:var(--text-secondary); margin:0;">We use cookies to improve your experience. By continuing, you agree to our <a href="#privacy" style="color:var(--primary);">Privacy Policy</a>.</p>
+    <button onclick="acceptCookies()" style="padding:8px 20px; background:var(--primary); color:#fff; border:none; border-radius:6px; font-weight:600; cursor:pointer;">Accept</button>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/app.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/shop.js"></script>
+  <script src="js/checkout.js"></script>
+  <script src="js/account.js"></script>
+  <script src="js/admin.js"></script>
+  <script src="js/pages.js"></script>
+</body>
+</html>
