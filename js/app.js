@@ -2,9 +2,26 @@
 // APP CORE - State, API, Router, Utils
 // ============================
 
-const API_URL = window.location.hostname === 'localhost'
-  ? 'http://localhost:5000/api'
-  : 'https://velric-london-api.onrender.com/api';
+// ============================
+// APP CORE - State, API, Router, Utils
+// ============================
+
+// 🔥 FIXED: Better environment detection for production
+const API_URL = (() => {
+  // Production backend on Render
+  if (window.location.hostname === 'velric-london.netlify.app' || 
+      window.location.hostname.includes('netlify.app')) {
+    return 'https://velric-london-api.onrender.com/api';
+  }
+  // Local development
+  if (window.location.hostname === 'localhost' || 
+      window.location.hostname === '127.0.0.1') {
+    return 'http://localhost:5000/api';
+  }
+  // Fallback for any other production domain
+  return 'https://velric-london-api.onrender.com/api';
+})();
+
 const state = {
   token: localStorage.getItem('velric_token') || null,
   user: JSON.parse(localStorage.getItem('velric_user') || 'null'),
