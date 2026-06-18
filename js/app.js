@@ -17,7 +17,7 @@ const API_URL = (() => {
   
   // Production (Netlify or any other domain)
   return 'https://velric-london-api.onrender.com/api';
-})();s
+})();
 
 const state = {
   token: localStorage.getItem('velric_token') || null,
