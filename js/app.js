@@ -8,19 +8,16 @@
 
 // 🔥 FIXED: Better environment detection for production
 const API_URL = (() => {
-  // Production backend on Render
-  if (window.location.hostname === 'velric-london.netlify.app' || 
-      window.location.hostname.includes('netlify.app')) {
-    return 'https://velric-london-api.onrender.com/api';
-  }
+  const hostname = window.location.hostname;
+  
   // Local development
-  if (window.location.hostname === 'localhost' || 
-      window.location.hostname === '127.0.0.1') {
+  if (hostname === 'localhost' || hostname === '127.0.0.1') {
     return 'http://localhost:5000/api';
   }
-  // Fallback for any other production domain
+  
+  // Production (Netlify or any other domain)
   return 'https://velric-london-api.onrender.com/api';
-})();
+})();s
 
 const state = {
   token: localStorage.getItem('velric_token') || null,
